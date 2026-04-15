@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do 
   	namespace :v1 do 
+  		post '/login', to: 'authentication#login'
   		resources :posts
   	end
   end

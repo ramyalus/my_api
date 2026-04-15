@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 	before_action :set_action, only: [:show, :update, :destroy]
 
 	def index
-		posts = Post.all 
+		posts = @current_user.posts 
 		render json: posts
 	end
 
@@ -11,7 +11,7 @@ class Api::V1::PostsController < ApplicationController
 	end
 
 	def create
-		post = Post.new(post_params)
+		post = @current_user.posts.new(post_params)
 		if post.save 
 			render json: post, status: :created
 		else
